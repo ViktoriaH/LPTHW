@@ -101,7 +101,7 @@ def start():
     You are walking through a forest.
     The sun is beginning to set but it turns out that you can't find your wack back home.
     You wander around aimlessly, hoping for a miracle.
-    You make it to a WEGGABELUNG, you can either go right, or go left.
+    You make it to a fork in the road, you can either go right, or go left.
     """
     print "\nWhich one do you take?"
 

@@ -1,10 +1,12 @@
 from sys import exit
 from random import randint
 
+
 class Scene(object):
 
     def enter(self):
-        print "not configured yet"
+
+        print "?"
         exit(1)
 
 class Engine(object):
@@ -21,6 +23,8 @@ class Engine(object):
             current_scene = self.scene_map.next_scene(next_scene_name)
 
         current_scene.enter()
+
+
 
 class Death(Scene):
 
@@ -128,23 +132,17 @@ class Office(Scene):
         print "so that you can't get out unless someone unlocks it from outside."
         code = "%d%d%d%d" % (2,4,1,2)
 
-
-        guesses = 0
-
-        while guesses < 3:
-            guess = raw_input("[type code here]> ")
+        for i in range(3):
+            guess=raw_input("[type code here]> ")
             if guess == code:
-                break
-            print "unlocked"
-            guesses += 1
-
-        if guess == code:
-            print "\n"
-            print "The security program unlocks and you are able to"
-            print "lock any door in the building."
-            print "You quickly find the gift storage room door and click on 'lock'."
-            print "\n"
-            return 'junk_room'
+                print "\n"
+                print "The security program unlocks and you are able to"
+                print "lock any door in the building."
+                print "You quickly find the gift storage room door and click on 'lock'."
+                print "\n"
+                return 'junk_room'
+            else:
+                print "Invalid!"
         else:
             print "The computer buzzes and shuts itself down."
             print "Behind you you can hear the door lock itself - you are trapped."
@@ -175,8 +173,9 @@ class JunkRoom(Scene):
         print "But you need to be quick, and you're small so can only grab a few things."
         print "In the distance you hear Ranta's triumphant laugh."
         print "Oh no, he must have succeeded in burning down that door, hurry!"
-        print "YOu quickly shove some things in your backpack, hoping they'll be helpful"
-        backpack = ['fire extinguisher', 'marbles', 'rope']
+        print "You quickly shove some things in your backpack, hoping they'll be helpful"
+
+
         print "And run to the storage room."
 
         return 'storage_room'
@@ -191,8 +190,15 @@ class StorageRoom(Scene):
         print "You yell out 'STOP!' and Ranta turns to face you. He drops the"
         print "flame thrower and runs towards you. Quickly you open your bag to"
         print "see what's inside:"
-        backpack = ['fire extinguisher', 'marbles', 'rope']
-        print backpack
+        print "\n"
+        backpack = []
+
+        backpack.append("rope")
+        backpack.append("marbles")
+        backpack.append("fire extinguisher")
+        for item in backpack:
+            print(item)
+
         print "\n"
         print "What do you use first?"
 
@@ -283,6 +289,8 @@ class Map(object):
 
     def opening_scene(self):
         return self.next_scene(self.start_scene)
+
+
 
 a_map = Map('starting_point')
 a_game = Engine(a_map)

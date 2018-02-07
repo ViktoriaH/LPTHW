@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block bodycontent %}
+<div class = "container-fluid">
+{% if scene %}
+
+  <h1 style = "text-align: center;"> {{ scene.title }} </h1>
+  <pre style = "text-align: center;">{{ scene.description }}</pre>
+        {% if scene.m_choice == True %}
+          <p style = "text-align: center;">
+            <h2 style = "text-align: center;">What do you do?</h2>
+            <form style = "text-align: center;" id="radio" action="/game" method="POST">
+              {% for i in scene.paths %}
+                <input type="radio" name="userinput" value="{{ i }}" required>
+                {{ i }}
+              {% endfor %}
+                <input type="submit" class="button" value="Submit">
+            </form>
+          </p>
+        {% else %}
+          <p style = "text-align: center;">
+            <a style = "text-align: center" href="/" class="button">Play Again!</a>
+          </p>
+        {% endif %}
+
+{% endif %}
+</div>
+{% endblock %}

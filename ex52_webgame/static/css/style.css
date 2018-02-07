@@ -1,0 +1,29 @@
+body {
+  font-family: helvetica, sans-serif;
+	background: gray;
+	margin: auto;
+}
+pre {
+  font-family: helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+.button {
+    background-color: #636464;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 8px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+#footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:30px;
+   width:100%;
+   background:#999;
+}
